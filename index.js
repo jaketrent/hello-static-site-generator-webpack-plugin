@@ -1,9 +1,20 @@
+import { StaticRouter, Route } from 'react-router-dom'
+import React from 'react'
+import ReactDOMServer from 'react-dom/server'
 
-// module.exports = function render(locals) {
-//   return '<html>' + locals.greet + ' from ' + locals.path + '</html>';
-// };
-
+import Home from './home'
+import About from './about'
 
 export default (locals) => {
-  return '<html>Yola from ' + locals.path + '</html>';
-};
+  return ReactDOMServer.renderToStaticMarkup(
+    <StaticRouter location={locals.path} context={{}}>
+      <div>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/about" component={About} />
+      </div>
+    </StaticRouter>
+  )
+}
+
+
+

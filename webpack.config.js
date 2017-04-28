@@ -11,8 +11,20 @@ module.exports = {
     libraryTarget: 'umd'
   },
 
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      }
+    ]
+  },
+
   plugins: [
-    new StaticSiteGeneratorPlugin()
+    new StaticSiteGeneratorPlugin({
+      crawl: true
+    })
   ]
 
 };
