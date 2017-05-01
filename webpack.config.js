@@ -3,7 +3,7 @@ const StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin'
 
 module.exports = {
 
-  entry: './index.js',
+  entry: './site/index.js',
 
   output: {
     filename: 'index.js',
