@@ -1,7 +1,21 @@
 import React from 'react'
 
+import ButtonReadme from '../../components/button/README.md'
+
+const COMPONENT_PATH_PREFIX = '../../components/'
+
+const docs = {
+  button: ButtonReadme
+}
+
+const ComponentDoc = props => 
+    <div>
+      Detail doc component for {props.componentId}: 
+      {React.createElement(docs[props.componentId])}
+    </div>
+
 export default (props) =>
   <div>
-    Detail for {props.match.params.componentId}
+    <ComponentDoc componentId={props.match.params.componentId} />
   </div>
 

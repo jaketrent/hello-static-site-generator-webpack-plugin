@@ -17,6 +17,11 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ['babel-loader']
+      },
+      {
+        test: /\.md$/,
+        exclude: /node_modules/,
+        use: ['babel-loader', 'react-markdown-loader']
       }
     ]
   },
