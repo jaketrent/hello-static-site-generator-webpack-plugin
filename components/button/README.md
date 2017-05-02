@@ -1,7 +1,7 @@
 ---
 imports: 
-  css: './button.css'
-  html: './button.html'
+  css: './button.component.css'
+  html: './button.component.html'
   Button: './button.js'
 ---
 

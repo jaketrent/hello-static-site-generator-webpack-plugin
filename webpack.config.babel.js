@@ -24,14 +24,19 @@ module.exports = {
         use: ['babel-loader', 'react-markdown-loader']
       },
       {
-        test: /\.html$/,
+        test: /\.component\.html$/,
         exclude: /node_modules/,
-        use: ['html-loader']
+        use: ['import-react-loader', 'babel-loader']
       },
       {
-        test: /\.css$/,
+        test: /\.component\.css$/,
         exclude: /node_modules/,
-        use: ['css-loader']
+        use: [{
+          loader: 'css-loader',
+          options: {
+            modules: true
+          }
+        }]
       }
     ]
   },
@@ -40,6 +45,12 @@ module.exports = {
     new StaticSiteGeneratorPlugin({
       crawl: true
     })
-  ]
+  ],
 
-};
+  resolveLoader: {
+    alias: {
+      'html-to-react-loader': path.join(__dirname, 'utils', 'html-to-react-loader.js'),
+      'import-react-loader': path.join(__dirname, 'utils', 'import-react-loader.js')
+    }
+  }
+}
