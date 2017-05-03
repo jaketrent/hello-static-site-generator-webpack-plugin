@@ -25,7 +25,7 @@ The readme file
 
 This is it:
 
-```render html
+```render react
 <Button>This is from the docs</Button>
 ```
 

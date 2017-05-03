@@ -15,7 +15,7 @@ const
  * @param   {string} langClass  CSS class for the code block
  * @returns {string}            Code block with souce and run code
  */
-function codeBlockTemplate(runOutput, sourceOutput, langClass) {
+function codeBlockTemplate({ runOutput, sourceOutput, langClass }) {
   const runHtml = runOutput
     ? `<div class="run">${runOutput}</div>`
     : ''
@@ -33,6 +33,18 @@ function codeBlockTemplate(runOutput, sourceOutput, langClass) {
 </div>`
 }
 
+const formatEscape = src => escapeHtml(src)
+
+const formatHighlight = (highlight, lang, src) => highlight(src, lang)
+
+const formatReact = src =>
+  src
+    .replace(/{/g, '{"{"{')
+    .replace(/}/g, '{"}"}')
+    .replace(/{"{"{/g, '{"{"}')
+    .replace(/(\n)/g, '{"\\n"}')
+    .replace(/class=/g, 'className=')
+
 /**
  * Parse a code block to have a source and a run code
  * @param   {String}   code       - Raw html code
@@ -42,24 +54,11 @@ function codeBlockTemplate(runOutput, sourceOutput, langClass) {
  * @returns {String}                Code block with souce and run code
  */
 function parseCodeBlock(code, lang, langPrefix, highlight) {
-  let sourceOutput = escapeHtml(code);
-  console.log('escaped sourceOutput', sourceOutput)
-
-  if (highlight) {
-    sourceOutput = highlight(code, lang);
-  }
-
-  const langClass = !lang ? '' : `${langPrefix}${escape(lang, true)}`
-  const runOutput = code
-
-  sourceOutput = sourceOutput
-    .replace(/{/g, '{"{"{')
-    .replace(/}/g, '{"}"}')
-    .replace(/{"{"{/g, '{"{"}')
-    .replace(/(\n)/g, '{"\\n"}')
-    .replace(/class=/g, 'className=');
-
-  return codeBlockTemplate(runOutput, sourceOutput, langClass);
+  return codeBlockTemplate({
+    runOutput: lang === 'react' ? formatReact(code) : null,
+    sourceOutput: formatEscape(code),
+    langClass: lang ? lang === 'react' ? `${langPrefix}html` : `${langPrefix}${lang}` : null
+  })
 }
 
 /**
