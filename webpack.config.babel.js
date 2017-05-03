@@ -45,19 +45,19 @@ module.exports = {
       // TODO: pickup - after I made css modules import correctly
       // I'm getting further in the component rendering,
       // and I'm back to it thinking I'm not returning a react element
-      // {
-      //   test: /\.css$/,
-      //   exclude: /node_modules/,
-      //   use: ExtractTextPlugin.extract({
-      //     fallback: 'style-loader',
-      //     use: {
-      //       loader: 'css-loader',
-      //       options: {
-      //         modules: true
-      //       }
-      //     }
-      //   })
-      // }
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          }
+        })
+      }
     ]
   },
 
