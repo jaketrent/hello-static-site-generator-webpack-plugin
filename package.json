@@ -18,11 +18,13 @@
     "concurrently": "^3.4.0",
     "css-loader": "^0.28.0",
     "exports-loader": "^0.6.4",
+    "extract-text-webpack-plugin": "^2.1.0",
     "html-loader": "^0.4.5",
     "html-to-react": "^1.2.7",
     "http-server": "^0.9.0",
     "jstransform": "^11.0.3",
     "loader-utils": "^1.1.0",
+    "raw-loader": "^0.5.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-element-to-jsx-string": "^6.4.0",
@@ -31,6 +33,7 @@
     "react-styleable": "^2.2.5",
     "rimraf": "^2.6.1",
     "static-site-generator-webpack-plugin": "^3.4.1",
+    "style-loader": "^0.17.0",
     "webpack": "^2.4.1"
   }
 }

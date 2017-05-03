@@ -6,7 +6,11 @@ module.exports = function importReactLoader(source) {
 
   // console.log('source', source)
 
-  // TODO: convert class= to className=
-  return 'var React = require("react")\n module.exports = ' + source
+  // TODO: pickup - removed function callback here; readd once rEact is happy again
+  const replaced = 'import React from \'react\'; export default ' + source
+
+  console.log('after import added', replaced)
+
+  return replaced
 }
 

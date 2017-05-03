@@ -1,7 +1,7 @@
 ---
 imports: 
-  css: './button.component.css'
-  html: './button.component.html'
+  html: './button.html'
+  css: './button.css'
   Button: './button.js'
 ---
 
@@ -9,16 +9,16 @@ imports:
 
 The readme file
 
-## This is the CSS
-
-```render css
-{css}
-```
-
-## This is the HTML
+## This is HTML
 
 ```render html
 {html}
+```
+
+## This is CSS
+
+```render css
+{css}
 ```
 
 ## An example:
