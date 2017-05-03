@@ -26,7 +26,7 @@ The readme file
 This is it:
 
 ```render html
-<Button thing={'wow'} />
+<Button>This is from the docs</Button>
 ```
 
 Wowzers.
