@@ -60,6 +60,7 @@ module.exports = {
   resolveLoader: {
     alias: {
       'import-react-loader': path.join(__dirname, 'utils', 'import-react-loader.js'),
+      'react-markdown-loader': path.join(__dirname, 'utils', 'react-markdown-loader/index.js'),
       'react-styleable-classname-loader': path.join(__dirname, 'utils', 'react-styleable-classname-loader.js'),
       'rename-jsx-attributes-loader': path.join(__dirname, 'utils', 'rename-jsx-attributes-loader.js')
     }
