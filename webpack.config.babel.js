@@ -24,24 +24,24 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader', 'react-markdown-loader']
       },
-      // {
-      //   test: /\.component\.html$/,
-      //   exclude: /node_modules/,
-      //   use: [
-      //     'babel-loader',
-      //     'import-react-loader',
-      //     // 'react-styleable-classname-loader',
-      //     // 'rename-jsx-attributes-loader'
-      //   ]
-      // },
       {
         test: /\.html$/,
-        use: ['raw-loader']
+        exclude: /node_modules/,
+        use: [
+          'babel-loader',
+          'import-react-loader',
+          'react-styleable-classname-loader',
+          'rename-jsx-attributes-loader'
+        ]
       },
-      {
-        test: /\.css$/,
-        use: ['raw-loader']
-      }
+      // {
+      //   test: /\.html$/,
+      //   use: ['raw-loader']
+      // },
+      // {
+      //   test: /\.css$/,
+      //   use: ['raw-loader']
+      // }
       // TODO: pickup - after I made css modules import correctly
       // I'm getting further in the component rendering,
       // and I'm back to it thinking I'm not returning a react element
@@ -72,8 +72,8 @@ module.exports = {
     alias: {
       // 'html-to-react-loader': path.join(__dirname, 'utils', 'html-to-react-loader.js'),
       'import-react-loader': path.join(__dirname, 'utils', 'import-react-loader.js'),
-      // 'react-styleable-classname-loader': path.join(__dirname, 'utils', 'react-styleable-classname-loader.js'),
-      // 'rename-jsx-attributes-loader': path.join(__dirname, 'utils', 'rename-jsx-attributes-loader.js')
+      'react-styleable-classname-loader': path.join(__dirname, 'utils', 'react-styleable-classname-loader.js'),
+      'rename-jsx-attributes-loader': path.join(__dirname, 'utils', 'rename-jsx-attributes-loader.js')
     }
   }
 }

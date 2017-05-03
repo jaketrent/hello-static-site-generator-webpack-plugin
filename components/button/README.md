@@ -1,7 +1,7 @@
 ---
 imports: 
-  html: './button.html'
-  css: './button.css'
+  html: '!!raw-loader!./button.html'
+  css: '!!raw-loader!./button.css'
   Button: './button.js'
 ---
 

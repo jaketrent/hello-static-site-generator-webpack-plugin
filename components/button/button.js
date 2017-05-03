@@ -6,8 +6,7 @@ import html from './button.html'
 // console.log('css', css)
 
 const Button = props => {
-  // return html
-  return <button>jake</button>
+  return html
 }
 
 export default Button
