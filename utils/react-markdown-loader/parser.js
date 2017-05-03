@@ -16,15 +16,21 @@ const
  * @returns {string}            Code block with souce and run code
  */
 function codeBlockTemplate(runOutput, sourceOutput, langClass) {
+  const runHtml = runOutput
+    ? `<div class="run">${runOutput}</div>`
+    : ''
+  const sourceHtml = sourceOutput
+    ? `<div class="source">
+        <pre><code${langClass ? ` class="${langClass}"` : ''}>
+          ${sourceOutput}
+        </code></pre>
+      </div>`
+    : ''
   return `
 <div class="example">
-  <div class="run">${runOutput}</div>
-  <div class="source">
-    <pre><code${!langClass ? '' : ` class="${langClass}"`}>
-      ${sourceOutput}
-    </code></pre>
-  </div>
-</div>`;
+  ${runHtml}
+  ${sourceHtml}
+</div>`
 }
 
 /**
