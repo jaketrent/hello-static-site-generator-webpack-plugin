@@ -2,7 +2,6 @@
 
 const
   frontMatter = require('front-matter'),
-  Prism = require('node-prismjs'),
   Remarkable = require('remarkable'),
   escapeHtml = require('remarkable/lib/common/utils').escapeHtml,
   md = new Remarkable();
@@ -35,8 +34,6 @@ function codeBlockTemplate({ runOutput, sourceOutput, langClass }) {
 
 const formatEscape = src => escapeHtml(src)
 
-const formatHighlight = (highlight, lang, src) => highlight(src, lang)
-
 const formatReact = src =>
   src
     .replace(/{/g, '{"{"{')
@@ -50,10 +47,9 @@ const formatReact = src =>
  * @param   {String}   code       - Raw html code
  * @param   {String}   lang       - Language indicated in the code block
  * @param   {String}   langPrefix - Language prefix
- * @param   {Function} highlight  - Code highlight function
  * @returns {String}                Code block with souce and run code
  */
-function parseCodeBlock(code, lang, langPrefix, highlight) {
+function parseCodeBlock(code, lang, langPrefix) {
   return codeBlockTemplate({
     runOutput: lang === 'react' ? formatReact(code) : null,
     sourceOutput: formatEscape(code),
@@ -85,10 +81,6 @@ function parseMarkdown(markdown) {
     let html;
 
     const options = {
-      highlight(code, lang) {
-        const language = Prism.languages[lang] || Prism.languages.autoit;
-        return Prism.highlight(code, language);
-      },
       xhtmlOut: true
     };
 
@@ -100,8 +92,7 @@ function parseMarkdown(markdown) {
       return parseCodeBlock(
         tokens[idx].content,
         codeTags[codeTags.length - 1],
-        options.langPrefix,
-        options.highlight
+        options.langPrefix
       );
     };
 
