@@ -10,18 +10,18 @@ const
 /**
  * Wraps the code and jsx in an html component
  * for styling it later
- * @param   {string} exampleRun Code to be run in the styleguide
- * @param   {string} exampleSrc Source that will be shown as example
+ * @param   {string} runOutput Code to be run in the styleguide
+ * @param   {string} sourceOutput Source that will be shown as example
  * @param   {string} langClass  CSS class for the code block
  * @returns {string}            Code block with souce and run code
  */
-function codeBlockTemplate(exampleRun, exampleSrc, langClass) {
+function codeBlockTemplate(runOutput, sourceOutput, langClass) {
   return `
 <div class="example">
-  <div class="run">${exampleRun}</div>
+  <div class="run">${runOutput}</div>
   <div class="source">
     <pre><code${!langClass ? '' : ` class="${langClass}"`}>
-      ${exampleSrc}
+      ${sourceOutput}
     </code></pre>
   </div>
 </div>`;
@@ -36,24 +36,24 @@ function codeBlockTemplate(exampleRun, exampleSrc, langClass) {
  * @returns {String}                Code block with souce and run code
  */
 function parseCodeBlock(code, lang, langPrefix, highlight) {
-  let codeBlock = escapeHtml(code);
+  let sourceOutput = escapeHtml(code);
+  console.log('escaped sourceOutput', sourceOutput)
 
   if (highlight) {
-    codeBlock = highlight(code, lang);
+    sourceOutput = highlight(code, lang);
   }
 
-  const
-    langClass = !lang ? '' : `${langPrefix}${escape(lang, true)}`,
-    jsx = code;
+  const langClass = !lang ? '' : `${langPrefix}${escape(lang, true)}`
+  const runOutput = code
 
-  codeBlock = codeBlock
+  sourceOutput = sourceOutput
     .replace(/{/g, '{"{"{')
     .replace(/}/g, '{"}"}')
     .replace(/{"{"{/g, '{"{"}')
     .replace(/(\n)/g, '{"\\n"}')
     .replace(/class=/g, 'className=');
 
-  return codeBlockTemplate(jsx, codeBlock, langClass);
+  return codeBlockTemplate(runOutput, sourceOutput, langClass);
 }
 
 /**
