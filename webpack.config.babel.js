@@ -34,17 +34,6 @@ module.exports = {
           'rename-jsx-attributes-loader'
         ]
       },
-      // {
-      //   test: /\.html$/,
-      //   use: ['raw-loader']
-      // },
-      // {
-      //   test: /\.css$/,
-      //   use: ['raw-loader']
-      // }
-      // TODO: pickup - after I made css modules import correctly
-      // I'm getting further in the component rendering,
-      // and I'm back to it thinking I'm not returning a react element
       {
         test: /\.css$/,
         exclude: /node_modules/,
@@ -70,7 +59,6 @@ module.exports = {
 
   resolveLoader: {
     alias: {
-      // 'html-to-react-loader': path.join(__dirname, 'utils', 'html-to-react-loader.js'),
       'import-react-loader': path.join(__dirname, 'utils', 'import-react-loader.js'),
       'react-styleable-classname-loader': path.join(__dirname, 'utils', 'react-styleable-classname-loader.js'),
       'rename-jsx-attributes-loader': path.join(__dirname, 'utils', 'rename-jsx-attributes-loader.js')
