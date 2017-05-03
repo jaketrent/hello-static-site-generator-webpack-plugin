@@ -7,7 +7,7 @@ module.exports = function importReactLoader(source) {
   // console.log('source', source)
 
   // TODO: pickup - removed function callback here; readd once rEact is happy again
-  const replaced = 'import React from \'react\'; export default ' + source
+  const replaced = 'import React from \'react\'; export default (props) => ' + source
 
   console.log('after import added', replaced)
 
