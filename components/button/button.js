@@ -8,5 +8,4 @@ const Button = props => {
   return html(props)
 }
 
-// export default Button
 export default styleable(css)(Button)

@@ -62,7 +62,7 @@ module.exports = {
   },
 
   plugins: [
-    new ExtractTextPlugin('[name].css'),
+    new ExtractTextPlugin('styles.css'),
     new StaticSiteGeneratorPlugin({
       crawl: true
     })
